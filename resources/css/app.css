@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Modern Glassmorphism & Animated Blobs */
+body {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.blob-bg {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob1 {
+    top: -120px;
+    left: -120px;
+    width: 340px;
+    height: 340px;
+    opacity: 0.5;
+    animation: blobMove1 18s infinite alternate ease-in-out;
+}
+.blob2 {
+    bottom: -100px;
+    right: -100px;
+    width: 260px;
+    height: 260px;
+    opacity: 0.4;
+    animation: blobMove2 22s infinite alternate ease-in-out;
+}
+@keyframes blobMove1 {
+    0% { transform: scale(1) translate(0,0); }
+    100% { transform: scale(1.2) translate(60px, 40px); }
+}
+@keyframes blobMove2 {
+    0% { transform: scale(1) translate(0,0); }
+    100% { transform: scale(1.1) translate(-40px, -60px); }
+}
+
+.glass {
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.24);
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3rem;
+}
+
+.service-card, .portfolio-card, .blog-card, .team-card, .price-card {
+    transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s;
+    box-shadow: 0 2px 16px rgba(37,117,252,0.09);
+    border-radius: 1.5rem;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+.service-card:hover, .portfolio-card:hover, .blog-card:hover, .team-card:hover, .price-card:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 8px 32px rgba(37,117,252,0.18);
+}
+
+.btn, .btn-primary, .btn-light {
+    transition: box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(106,17,203,0.08);
+    font-weight: 600;
+    border-radius: 2rem;
+}
+.btn:hover, .btn-primary:hover, .btn-light:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(37,117,252,0.18);
+    filter: brightness(1.08);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 900px) {
+    .hero { flex-direction: column; gap: 2.5rem; }
+}
+@media (max-width: 600px) {
+    .hero { flex-direction: column; gap: 1.5rem; }
+    .service-card, .portfolio-card, .blog-card, .team-card, .price-card {
+        padding: 1.2rem !important;
+    }
+}
+
+/* Already includes glassmorphism, blobs, gradients, and responsive tweaks. Add any missing modern styles if needed. */
